@@ -17,31 +17,31 @@
 </script>
 </head>
 <body>
-    <section id="landing-page">
+    <section id="landing-page" onmousemove="moveBackground(event)">
         <nav>
             <figure>
                 <img id="personal-logo" src="./assets/organic creations logo.jpg" alt="">
             </figure>
             <ul class="nav__link--list">
-                <li class="nav__link">
+                <li class="nav__link" onclick="toggleModal()">
                     <a href="#" class="
                     nav__link--anchor
                     link__hover-effect
                     link__hover-effect--black">About</a>
                 </li>
                 <li class="nav__link">
-                    <a href="#" class="
+                    <a href="#projects" class="
                     nav__link--anchor
                     link__hover-effect
                     link__hover-effect--black">Projects</a>
                 </li>
-                <li class="nav__link">
+                <li class="nav__link" onclick="toggleModal()">
                     <a href="#" class="
                     nav__link--anchor
                     link__hover-effect
                     link__hover-effect--black">Contact</a>
                 </li>
-                <li class="nav__link click">
+                <li class="nav__link click" onclick="toggleContrast()">
                     <a href="#" class="
                     nav__link--anchor
                     link__hover-effect
@@ -58,7 +58,7 @@
         with a passion for creating beautiful, responsive, 
         and highly-functional web applications. 
         <br>
-        Here's a bit more <b class="purple">about ME!</b>
+        Here's a bit more <b class="purple click" onclick="toggleModal()">about ME!</b>
     </p>
     <div class="social__list">
         <a href="https://www.linkedin.com/in/jasmine-wilcox?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B4LjYmG8IQKuT66OUZAQ3wg%3D%3D" target="_blank" class="social__link click">
@@ -73,7 +73,7 @@
     </div>
 </div>
         </header>
-        <button class="mail__btn click">
+        <button class="mail__btn click" onclick="toggleModal()">
             <i class="fa-solid fa-envelope"></i>
         </button>
         <a href="#projects" class="scroll">
@@ -120,15 +120,22 @@
                 </div>
             </div>
             <div class="modal__half modal__contact">
+                <i class="fa-solid fa-xmark modal__exit click" onclick="toggleModal()"></i>
                 <h3 class="modal__title modal__title--contact">Let's have a chat!</h3>
                 <h4 class="modal__sub-title modal__sub-title--contact">I'm currently open to new opportunities.</h4>
-                <form class="modal__form" onsubmit="contact(event)">
-                    <label class="modal__form--label" for=""><bold class="purple dot">* </bold>Name</label>
-                    <input class="modal__text" name="user_name" type="text" required></input>
-                    <label class="modal__form--label" for=""><bold class="purple dot">* </bold>E-mail</label>
-                    <input class="modal__text" name="user_email" type="email" required></input>
-                    <label class="modal__form--label" for=""><bold class="purple dot">* </bold>Message</label>
+                <form id="modal__form" onsubmit="contact(event)">
+                    <div class="form__item">
+                        <label class="modal__form--label"><bold class="purple dot">* </bold>Name</label>
+                        <input class="modal__text" name="user_name" type="text" required></input>
+                    </div>
+                    <div class="form__item">
+                        <label class="modal__form--label"><bold class="purple dot">* </bold>E-mail</label>
+                        <input class="modal__text" name="user_email" type="email" required></input>
+                    </div>
+                    <div class="form__item">
+                        <label class="modal__form--label"><bold class="purple dot">* </bold>Message</label>
                     <textarea class="modal__textarea" name="message" type="text" required></textarea>
+                    </div>
                     <button class="modal__btn">Send it my way <i class="fa-solid fa-paper-plane"></i></button>
                 </form>
                 <div class="modal__overlay modal__overlay--loading">
@@ -138,8 +145,16 @@
                     Thanks for the message! Looking forward to speaking with you soon.
                 </div>
             </div>
-            <i class="fa-solid fa-xmark modal__exit click"></i>
         </div>
+        <img src="./assets/semi circle.svg" class="shape shape--0">
+        <img src="./assets/circle.svg" class="shape shape--1">
+        <img src="./assets/squiggly.svg" class="shape shape--2">
+        <img src="./assets/circle.svg" class="shape shape--3">
+        <img src="./assets/triangle.svg" class="shape shape--4">
+        <img src="./assets/circle.svg" class="shape shape--5">
+        <img src="./assets/squiggly.svg" class="shape shape--6">
+        <img src="./assets/circle.svg" class="shape shape--7">
+        <img src="./assets/semi circle.svg" class="shape shape--8">
     </section>
     <section id="projects">
         <div class="container">
@@ -165,7 +180,7 @@
                                       est fuga eosm.
                                 </p>
                                 <div class="project__description--links">
-                                    <a href="#" class="project__description--link">
+                                    <a href="https://github.com/JazzieVee" target="_blank" class="social__link click">
                                     <i class="fa-brands fa-square-github"></i>
                                     </a>
                                     <a href="#" class="project__description--link">
@@ -195,7 +210,7 @@
                                       est fuga eosm.
                                 </p>
                                 <div class="project__description--links">
-                                    <a href="#" class="project__description--link">
+                                    <a href="https://github.com/JazzieVee" target="_blank" class="social__link click">
                                     <i class="fa-brands fa-square-github"></i>
                                     </a>
                                     <a href="#" class="project__description--link">
@@ -225,7 +240,7 @@
                                       est fuga eosm.
                                 </p>
                                 <div class="project__description--links">
-                                    <a href="#" class="project__description--link">
+                                    <a href="https://github.com/JazzieVee" target="_blank" class="social__link click">
                                     <i class="fa-brands fa-square-github"></i>
                                     </a>
                                     <a href="#" class="project__description--link">
@@ -249,33 +264,36 @@
                 <img id="footer__logo--img" src="./assets/organic creations logo.jpg" alt="">
             </figure>
             <div class="footer__social--list">
-                <a href="#" class="
+            <a href="https://github.com/JazzieVee" target="_blank" 
+               class=" click
                 footer__social--link
                 link__hover-effect
                 link__hover-effect--white
                 ">
                 GitHub
                 </a> 
-                <a href="#" class="
+                <a href="https://www.linkedin.com/in/jasmine-wilcox?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B4LjYmG8IQKuT66OUZAQ3wg%3D%3D" target="_blank"
+                class=" click
                 footer__social--link
                 link__hover-effect
                 link__hover-effect--white
                 ">
                 LinkedIn
                 </a>
-                <a href="#" class="
+                <a href="#" onclick="toggleModal()" 
+                class=" click 
                 footer__social--link
                 link__hover-effect
-                link__hover-effect--white
-                ">
+                link__hover-effect--white">
                 Contact
                 </a>
-                <a href="#" class="
+                <a href="https://1drv.ms/w/c/e86d8e3677765a45/ES4con4zmPpNiPDm6sq-qIkBnUrnry8ZDzSi2iC-ZzlhHw?e=NgXIms" target="_blank"
+                class=" click                
                 footer__social--link
                 link__hover-effect
                 link__hover-effect--white
                 ">
-                Resume
+                Resume`
                 </a>
             </div>
             <div class="footer__copyright">Copyright © 2025  Jasmine Wilcox   <i class="fa-solid fa-hand-sparkles"></i></div>

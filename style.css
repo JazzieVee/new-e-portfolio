@@ -27,6 +27,34 @@ button {
 
 section {
     background-color: rgb(245, 245, 245);
+    transition: all 300ms ease;
+}
+
+input, textarea {
+    width: 100%;
+    background-color: #242424;
+    color: #fff;
+    outline: none;
+    border: 3px solid #c0c4cc;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin-bottom: 20px;
+    transition: all 300ms ease;
+}
+
+textarea {
+    resize: vertical;
+    height: 100px;
+    margin-top: 16px;
+}
+
+input:hover, textarea:hover {
+    border-color: #dcdfe6;
+}
+
+input:focus, textarea:focus {
+    border-color: coral;
 }
 
 .container {
@@ -43,33 +71,6 @@ section {
 
 button {
     cursor: pointer;
-}
-
-input, textarea {
-    width: 100%;
-    background-color: #242424;
-    color: #fff;
-    outline: none;
-    border: 3px solid #c0c4cc;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    margin-bottom: 20px;
-    transition: all 600ms ease;
-}
-
-textarea {
-    resize: vertical;
-    height: 100px;
-    margin-top: 16px;
-}
-
-input:hover, textarea:hover {
-    border-color: #dcdfe6;
-}
-
-input:focus, textarea:focus {
-    border-color: coral;
 }
 
 .click {
@@ -123,7 +124,48 @@ input:focus, textarea:focus {
     width: 100%;
 }
 
+nav, 
+.scroll,
+.header {
+    opacity: 1;
+    visibility:visible;
+    transition: all 600ms 800ms;
+}
 
+.modal--open nav,
+.modal--open .scroll,
+.modal--open .header {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 400ms;
+}
+
+.dark-theme .title,
+.dark-theme .section__title,
+.dark-theme .section__sub-title,
+.dark-theme .nav__link--anchor,
+.dark-theme .fa-moon,
+.dark-theme .header__para{
+    color: #fff;
+}
+.dark-theme section {
+    background-color: #242424;
+}
+.dark-theme #personal-logo,
+.dark-theme #footer__logo--img {
+    filter: invert(.9);
+}
+.dark-theme .scroll__icon {
+    border-color: #fff;
+}
+.dark-theme .scroll__icon:after,
+.dark-theme .link__hover-effect--black:after {
+    background-color: #fff;
+}
+.dark-theme .mail__btn {
+    background-color: #fff;
+    color:#242424;
+}
 
 /* 
 
@@ -272,10 +314,18 @@ MODAL
     width: 90%;
     max-width: 1100px;
     height: 750px;
-    box-shadow: 0 20px 80px 0 rgb(0, 0, 0, 0.55);
     border-radius: 20px;
     overflow: hidden;
     display: flex;
+    visibility: hidden;
+    z-index: -1;
+    transition: visibility 1s, z-index 1s, box-shadow 0.5s ease;
+}
+
+.modal--open .modal {
+    z-index: 60;
+    box-shadow: 0 20px 80px 0 rgb(0, 0, 0, 0.55);
+    visibility: visible;
 }
 
 .modal__half {
@@ -285,15 +335,24 @@ MODAL
     flex-direction: column;
     justify-content: center;
     position: relative;
+    transition: all 300ms ease-in;
+}
+
+.modal--open .modal__about,
+.modal--open .modal__contact {
+    transform: translateX(0%);
 }
 
 .modal__about {
     background-color: rgb(245, 245, 245);
+    transform: translateX(-110%);
 }
+
 
 .modal__contact {
     background-color: #242424;
     color: white;
+    transform: translateX(110%);
 }
 
 .modal__title {
@@ -400,7 +459,7 @@ MODAL
     background-color: transparent;
 }
 
-.modal_btn:active {
+.modal__btn:active {
     border-color: coral;
     color: coral;
 }
@@ -411,7 +470,7 @@ MODAL
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     z-index: -1;
@@ -432,6 +491,7 @@ MODAL
 
 .modal__overlay--visible {
     z-index: 1;
+    display: flex;
 }
 
 .fa-spinner {
@@ -512,6 +572,10 @@ PROJECTS
     max-width: 550px;
 }
 
+.project__description--links {
+    display: flex;
+}
+
 .project__wrapper:hover .project__wrapper--bg {
     opacity: .7;
 }
@@ -577,4 +641,51 @@ footer {
 .footer__social--link,
 .footer__copyright {
     color: white;
+}
+
+
+/* 
+
+SHAPES
+
+*/
+
+.shape {
+    position: fixed;
+}
+.shape--0 {
+    top: 15vh;
+    left: 5vw;
+}
+.shape--1 {
+    top: 15vh;
+    left: 50vw;
+}
+.shape--2 {
+    top: 15vh;
+    left: 80vw;
+}
+.shape--3 {
+    top: 50vh;
+    left: 5vw;
+}
+.shape--4 {
+    top: 50vh;
+    left: 50vw;
+}
+.shape--5 {
+    top: 50vh;
+    left: 80vw;
+}
+.shape--6 {
+    top: 80vh;
+    left: 5vw;
+}
+.shape--7 {
+    top: 80vh;
+    left: 50vw;
+}
+.shape--8 {
+    top: 80vh;
+    left: 80vw;
 }
